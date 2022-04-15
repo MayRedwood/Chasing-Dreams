@@ -3,30 +3,60 @@ class_name Enemy
 
 
 var player: Node2D
+var look_at_player := false
 export(Resource) var bullet_kit
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	__shoot()
+	var rand = randi() % 3
+	if rand == 1:
+		__shoot()
+		look_at_player = true
+	elif rand == 2:
+		__shoot_3()
+		look_at_player = true
+	else:
+		__shoot_2()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	global_rotation_degrees += 1
+	if look_at_player:
+		global_rotation = (player.global_position - global_position).angle()
+	else:
+		global_rotation_degrees += 1
 
 
 func __shoot():
+	yield(get_tree().create_timer(1.0), "timeout")
 	while true:
-		yield(get_tree().create_timer(0.5), "timeout")
+		shoot_at_player()
+		yield(get_tree().create_timer(0.2), "timeout")
+
+
+func __shoot_2():
+	yield(get_tree().create_timer(1.0), "timeout")
+	while true:
 		shoot_circle()
+		yield(get_tree().create_timer(0.5), "timeout")
+
+
+func __shoot_3():
+	yield(get_tree().create_timer(1.0), "timeout")
+	while true:
+		# warning-ignore: unused_variable
+		for i in range(20):
+			shoot_at_player()
+			yield(get_tree().create_timer(0.075), "timeout")
+		yield(get_tree().create_timer(1.0), "timeout")
 
 
 func shoot_at_player():
 	var bullet_velocity = (player.global_position - global_position).normalized()
 	var properties := {
 		"transform": Transform2D(bullet_velocity.angle(), global_position),
-		"velocity": bullet_velocity * 150
+		"velocity": bullet_velocity * 325
 	}
 	Bullets.spawn_bullet(bullet_kit, properties)
 
@@ -37,6 +67,6 @@ func shoot_circle():
 		bullet_velocity = bullet_velocity.rotated(i * deg2rad(360/10))
 		var properties := {
 			"transform": Transform2D(bullet_velocity.angle(), global_position),
-			"velocity": bullet_velocity * 150
+			"velocity": bullet_velocity * 200
 		}
 		Bullets.spawn_bullet(bullet_kit, properties)

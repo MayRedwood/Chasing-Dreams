@@ -76,8 +76,9 @@ func _on_area_shape_entered(area_id, area, area_shape, _local_shape):
 		return
 
 	# Get a BulletID from the area_shape passed in by the engine.
+	# warning-ignore: unused_variable
 	var bullet_id = Bullets.get_bullet_from_shape(area_id, area_shape)
 
-	Bullets.call_deferred("release_bullet", bullet_id)
+	#Bullets.call_deferred("release_bullet", bullet_id)
 	if not grasping:
 		get_tree().call_deferred("reload_current_scene")

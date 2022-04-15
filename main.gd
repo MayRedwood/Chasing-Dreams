@@ -19,7 +19,7 @@ func _process(_delta):
 
 
 func __spawn():
-	while true:
+	while is_inside_tree():
 		var x := randi() % 1025
 		var y := randi() % 601
 		var spawned = enemy.instance()
