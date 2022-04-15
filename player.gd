@@ -22,19 +22,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
-		tween.interpolate_property(self, "speed", speed, SPEED/2.0, 0.2, 2)
-		tween.interpolate_property(self, "modulate:a", modulate.a, 0.5, 0.2, 2)
-		tween.start()
-		#$Area2D.set_collision_mask_bit(0, false)
-		grasping = true
-		timer -= 25
-	elif event.is_action_released("ui_accept"):
-		if not Input.is_action_pressed("ui_select"):
-			tween.interpolate_property(self, "speed", speed, SPEED, 0.2, 2)
-		tween.interpolate_property(self, "modulate:a", modulate.a, 1.0, 0.2, 2)
-		tween.start()
-		#$Area2D.set_collision_mask_bit(0, true)
-		grasping = false
+		__grasp()
 	elif event.is_action_pressed("ui_select"):
 		tween.interpolate_property(self, "speed", speed, SPEED/2.0, 0.2, 2)
 		tween.start()
@@ -49,10 +37,8 @@ func _physics_process(delta):
 			ACCEL
 		)
 	
-	if grasping:
-		timer -= 4
-	elif timer < MAX_TIMER:
-		timer += 1
+	if timer < MAX_TIMER:
+		timer += 2
 	if timer <= 1:
 		# warning-ignore: return_value_discarded
 		get_tree().reload_current_scene()
@@ -91,3 +77,15 @@ func reload_scene():
 	if Global.score > Global.high_score:
 		Global.high_score = Global.score
 	get_tree().call_deferred("reload_current_scene")
+
+
+func __grasp():
+	timer -= 15 * 20
+	tween.interpolate_property(self, "modulate:a", modulate.a, 0.5, 0.25, 2)
+	tween.start()
+	grasping = true
+	yield(tween, "tween_all_completed")
+	tween.interpolate_property(self, "modulate:a", modulate.a, 1.0, 0.25, 2)
+	tween.start()
+	yield(tween, "tween_all_completed")
+	grasping = false

@@ -33,7 +33,7 @@ func __shoot():
 	yield(get_tree().create_timer(1.0), "timeout")
 	while true:
 		shoot_at_player()
-		yield(get_tree().create_timer(0.22), "timeout")
+		yield(get_tree().create_timer(0.27), "timeout")
 
 
 func __shoot_2():
@@ -57,7 +57,7 @@ func shoot_at_player():
 	var bullet_velocity = (player.global_position - global_position).normalized()
 	var properties := {
 		"transform": Transform2D(bullet_velocity.angle(), global_position),
-		"velocity": bullet_velocity * 200
+		"velocity": bullet_velocity * 300
 	}
 	#Bullets.spawn_bullet(bullet_kit, properties)
 	var bullet = Bullets.obtain_bullet(non_collison_kit)
@@ -68,9 +68,9 @@ func shoot_at_player():
 
 
 func shoot_circle():
-	for i in range(10):
+	for i in range(8):
 		var bullet_velocity = (player.global_position - global_position).normalized()
-		bullet_velocity = bullet_velocity.rotated(i * deg2rad(360/10))
+		bullet_velocity = bullet_velocity.rotated(i * deg2rad(360/8) + deg2rad(360/16))
 		var properties := {
 			"transform": Transform2D(bullet_velocity.angle(), global_position),
 			"velocity": bullet_velocity * 200

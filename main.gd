@@ -3,7 +3,7 @@ extends Node
 
 # Declare member variables here. Examples:
 export(PackedScene) var enemy
-var counter := 2.0
+var counter := 1.0
 
 
 # Called when the node enters the scene tree for the first time.
