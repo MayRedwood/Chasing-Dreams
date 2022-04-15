@@ -16,7 +16,8 @@ onready var tween := $Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# warning-ignore: return_value_discarded
+	$Area2D.connect("area_shape_entered", self, "_on_area_shape_entered")
 
 
 func _unhandled_input(event):
@@ -57,3 +58,14 @@ func get_player_input() -> Vector2:
 			Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 			Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 		)
+
+
+func _on_area_shape_entered(area_id, _area, area_shape, _local_shape):
+	if not Bullets.is_bullet_existing(area_id, area_shape):
+		# The colliding area is not a bullet, returning.
+		return
+
+	# Get a BulletID from the area_shape passed in by the engine.
+	var bullet_id = Bullets.get_bullet_from_shape(area_id, area_shape)
+
+	Bullets.call_deferred("release_bullet", bullet_id)

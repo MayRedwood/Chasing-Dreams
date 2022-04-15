@@ -5,6 +5,7 @@
 [ext_resource path="res://bullet.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 8.0
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 1 )
@@ -22,7 +23,7 @@ texture = ExtResource( 3 )
 bullet_class_name = "Bullet"
 material = SubResource( 2 )
 collisions_enabled = true
-collision_layer = 0
+collision_layer = 1
 collision_mask = 0
 collision_shape = SubResource( 1 )
 use_viewport_as_active_rect = true
