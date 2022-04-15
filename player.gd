@@ -25,13 +25,22 @@ func _unhandled_input(event):
 		tween.interpolate_property(self, "speed", speed, SPEED/2.0, 0.2, 2)
 		tween.interpolate_property(self, "modulate:a", modulate.a, 0.5, 0.2, 2)
 		tween.start()
+		#$Area2D.set_collision_mask_bit(0, false)
 		grasping = true
 		timer -= 25
 	elif event.is_action_released("ui_accept"):
-		tween.interpolate_property(self, "speed", speed, SPEED, 0.2, 2)
+		if not Input.is_action_pressed("ui_select"):
+			tween.interpolate_property(self, "speed", speed, SPEED, 0.2, 2)
 		tween.interpolate_property(self, "modulate:a", modulate.a, 1.0, 0.2, 2)
 		tween.start()
+		#$Area2D.set_collision_mask_bit(0, true)
 		grasping = false
+	elif event.is_action_pressed("ui_select"):
+		tween.interpolate_property(self, "speed", speed, SPEED/2.0, 0.2, 2)
+		tween.start()
+	elif event.is_action_released("ui_select"):
+		tween.interpolate_property(self, "speed", speed, SPEED, 0.2, 2)
+		tween.start()
 
 
 func _physics_process(delta):
@@ -60,12 +69,15 @@ func get_player_input() -> Vector2:
 		)
 
 
-func _on_area_shape_entered(area_id, _area, area_shape, _local_shape):
+func _on_area_shape_entered(area_id, area, area_shape, _local_shape):
 	if not Bullets.is_bullet_existing(area_id, area_shape):
-		# The colliding area is not a bullet, returning.
+		if area.get_parent() is Enemy and grasping:
+			area.get_parent().queue_free()
 		return
 
 	# Get a BulletID from the area_shape passed in by the engine.
 	var bullet_id = Bullets.get_bullet_from_shape(area_id, area_shape)
 
 	Bullets.call_deferred("release_bullet", bullet_id)
+	if not grasping:
+		get_tree().call_deferred("reload_current_scene")

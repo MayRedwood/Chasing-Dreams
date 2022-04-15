@@ -8,6 +8,7 @@
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
+enemy = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1024.0

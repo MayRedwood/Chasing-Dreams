@@ -1,4 +1,5 @@
 extends Node2D
+class_name Enemy
 
 
 var player: Node2D
@@ -17,8 +18,8 @@ func _process(_delta):
 
 func __shoot():
 	while true:
-		yield(get_tree().create_timer(0.3), "timeout")
-		shoot_at_player()
+		yield(get_tree().create_timer(0.5), "timeout")
+		shoot_circle()
 
 
 func shoot_at_player():
@@ -28,3 +29,14 @@ func shoot_at_player():
 		"velocity": bullet_velocity * 150
 	}
 	Bullets.spawn_bullet(bullet_kit, properties)
+
+
+func shoot_circle():
+	for i in range(10):
+		var bullet_velocity = (player.global_position - global_position).normalized()
+		bullet_velocity = bullet_velocity.rotated(i * deg2rad(360/10))
+		var properties := {
+			"transform": Transform2D(bullet_velocity.angle(), global_position),
+			"velocity": bullet_velocity * 150
+		}
+		Bullets.spawn_bullet(bullet_kit, properties)
