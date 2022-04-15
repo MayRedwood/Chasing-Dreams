@@ -39,9 +39,9 @@ func _physics_process(delta):
 	
 	if timer < MAX_TIMER:
 		timer += 2
-	if timer <= 1:
-		# warning-ignore: return_value_discarded
-		get_tree().reload_current_scene()
+		if timer <= 15 * 20:
+			# warning-ignore: return_value_discarded
+			reload_scene()
 	
 	position += velocity
 	position.x = clamp(position.x, 0, get_viewport_rect().size.x)
@@ -73,7 +73,7 @@ func _on_area_shape_entered(area_id, area, area_shape, _local_shape):
 
 
 func reload_scene():
-	var file := File.new()
+	#var file := File.new()
 	if Global.score > Global.high_score:
 		Global.high_score = Global.score
 	get_tree().call_deferred("reload_current_scene")

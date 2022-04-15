@@ -22,7 +22,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _physics_process(_delta):
 	if look_at_player:
 		global_rotation = (player.global_position - global_position).angle()
 	else:
@@ -54,33 +54,17 @@ func __shoot_3():
 
 
 func shoot_at_player():
-	var bullet_velocity = (player.global_position - global_position).normalized()
-	var properties := {
-		"transform": Transform2D(bullet_velocity.angle(), global_position),
-		"velocity": bullet_velocity * 300
-	}
-	#Bullets.spawn_bullet(bullet_kit, properties)
-	var bullet = Bullets.obtain_bullet(non_collison_kit)
-	Bullets.set_bullet_property(bullet, "transform", properties["transform"])
-	Bullets.set_bullet_property(bullet, "velocity", properties["velocity"])
-	__create_bullet_hitbox(bullet)
+	shoot_purple_bullet((player.global_position - global_position), 300)
 	Global.score += 2
 
 
 func shoot_circle():
 	for i in range(8):
-		var bullet_velocity = (player.global_position - global_position).normalized()
-		bullet_velocity = bullet_velocity.rotated(i * deg2rad(360/8) + deg2rad(360/16))
-		var properties := {
-			"transform": Transform2D(bullet_velocity.angle(), global_position),
-			"velocity": bullet_velocity * 200
-		}
-		#Bullets.spawn_bullet(bullet_kit, properties)
-		var bullet = Bullets.obtain_bullet(non_collison_kit)
-		Bullets.set_bullet_property(bullet, "transform", properties["transform"])
-		Bullets.set_bullet_property(bullet, "velocity", properties["velocity"])
-		__create_bullet_hitbox(bullet)
-		Global.score += 1
+		shoot_purple_bullet(
+				(player.global_position - global_position), 200,
+				i * deg2rad(360/8) + deg2rad(360/16)
+		)
+		Global.score += 2
 
 
 func __create_bullet_hitbox(bullet_id):
@@ -94,3 +78,17 @@ func __create_bullet_hitbox(bullet_id):
 	if properties["transform"] == null or properties["velocity"] == null:
 		return
 	Bullets.spawn_bullet(bullet_kit, properties)
+
+
+func shoot_purple_bullet(direction: Vector2, speed: float, add_angle:float = 0):
+	var bullet_direction = direction.normalized()
+	bullet_direction = bullet_direction.rotated(add_angle)
+	var properties := {
+		"transform": Transform2D(bullet_direction.angle(), global_position),
+		"velocity": bullet_direction * speed
+	}
+	#Bullets.spawn_bullet(bullet_kit, properties)
+	var bullet = Bullets.obtain_bullet(non_collison_kit)
+	Bullets.set_bullet_property(bullet, "transform", properties["transform"])
+	Bullets.set_bullet_property(bullet, "velocity", properties["velocity"])
+	__create_bullet_hitbox(bullet)
