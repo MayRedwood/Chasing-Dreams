@@ -5,7 +5,7 @@ const SPEED := 300
 const ACCEL := 0.8
 var speed: float = SPEED
 
-const MAX_TIMER := 25 * 60
+const MAX_TIMER := 15 * 60
 var timer := MAX_TIMER
 
 var grasping := false
@@ -71,9 +71,10 @@ func get_player_input() -> Vector2:
 
 func _on_area_shape_entered(area_id, area, area_shape, _local_shape):
 	if not Bullets.is_bullet_existing(area_id, area_shape):
-		if area.get_parent() is Enemy and grasping:
+		if area.get_parent() is Enemy:
 			area.get_parent().queue_free()
 			get_parent().counter -= 1
+			Global.score += 10
 		return
 
 	# Get a BulletID from the area_shape passed in by the engine.
@@ -82,4 +83,11 @@ func _on_area_shape_entered(area_id, area, area_shape, _local_shape):
 
 	#Bullets.call_deferred("release_bullet", bullet_id)
 	if not grasping:
-		get_tree().call_deferred("reload_current_scene")
+		reload_scene()
+
+
+func reload_scene():
+	var file := File.new()
+	if Global.score > Global.high_score:
+		Global.high_score = Global.score
+	get_tree().call_deferred("reload_current_scene")

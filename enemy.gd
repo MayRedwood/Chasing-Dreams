@@ -5,6 +5,7 @@ class_name Enemy
 var player: Node2D
 var look_at_player := false
 export(Resource) var bullet_kit
+export(Resource) var non_collison_kit
 
 
 # Called when the node enters the scene tree for the first time.
@@ -56,10 +57,14 @@ func shoot_at_player():
 	var bullet_velocity = (player.global_position - global_position).normalized()
 	var properties := {
 		"transform": Transform2D(bullet_velocity.angle(), global_position),
-		"velocity": bullet_velocity * 325
+		"velocity": bullet_velocity * 200
 	}
-	Bullets.spawn_bullet(bullet_kit, properties)
-	Global.score += 1
+	#Bullets.spawn_bullet(bullet_kit, properties)
+	var bullet = Bullets.obtain_bullet(non_collison_kit)
+	Bullets.set_bullet_property(bullet, "transform", properties["transform"])
+	Bullets.set_bullet_property(bullet, "velocity", properties["velocity"])
+	__create_bullet_hitbox(bullet)
+	Global.score += 2
 
 
 func shoot_circle():
@@ -70,5 +75,22 @@ func shoot_circle():
 			"transform": Transform2D(bullet_velocity.angle(), global_position),
 			"velocity": bullet_velocity * 200
 		}
-		Bullets.spawn_bullet(bullet_kit, properties)
+		#Bullets.spawn_bullet(bullet_kit, properties)
+		var bullet = Bullets.obtain_bullet(non_collison_kit)
+		Bullets.set_bullet_property(bullet, "transform", properties["transform"])
+		Bullets.set_bullet_property(bullet, "velocity", properties["velocity"])
+		__create_bullet_hitbox(bullet)
 		Global.score += 1
+
+
+func __create_bullet_hitbox(bullet_id):
+	if not Bullets.is_bullet_valid(bullet_id):
+		return
+	yield(get_tree().create_timer(0.5), "timeout")
+	var properties := {}
+	properties["transform"] = Bullets.get_bullet_property(bullet_id, "transform")
+	properties["velocity"] = Bullets.get_bullet_property(bullet_id, "velocity")
+	Bullets.release_bullet(bullet_id)
+	if properties["transform"] == null or properties["velocity"] == null:
+		return
+	Bullets.spawn_bullet(bullet_kit, properties)

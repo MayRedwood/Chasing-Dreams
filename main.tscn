@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://addons/native_bullets/bullets_environment.gd" type="Script" id=4]
 [ext_resource path="res://enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://non-collision_bullets.tres" type="Resource" id=7]
+[ext_resource path="res://another_kit.tres" type="Resource" id=8]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
@@ -24,13 +26,19 @@ position = Vector2( 512, 320 )
 
 [node name="BulletsEnvironment" type="Node" parent="."]
 script = ExtResource( 4 )
-bullet_kits = [ ExtResource( 3 ) ]
-pools_sizes = [ 500 ]
-z_indices = [ 500 ]
-bullet_types_amount = 1
+bullet_kits = [ ExtResource( 3 ), ExtResource( 7 ), ExtResource( 8 ) ]
+pools_sizes = [ 500, null, 50 ]
+z_indices = [ 500, null, 50 ]
+bullet_types_amount = 3
 bullet_type_0/bullet_kit = ExtResource( 3 )
 bullet_type_0/pool_size = 500
 bullet_type_0/z_index = 500
+bullet_type_1/bullet_kit = ExtResource( 7 )
+bullet_type_1/pool_size = null
+bullet_type_1/z_index = null
+bullet_type_2/bullet_kit = ExtResource( 8 )
+bullet_type_2/pool_size = 50
+bullet_type_2/z_index = 50
 
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 128, 256 )
@@ -54,6 +62,23 @@ anchor_right = 1.0
 margin_left = -264.0
 margin_right = -8.0
 margin_bottom = 53.0
+custom_colors/font_color = Color( 1, 0.337255, 0.466667, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "9"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -264.0
+margin_top = -48.0
+margin_right = -8.0
+margin_bottom = 5.0
 custom_colors/font_color = Color( 1, 0.337255, 0.466667, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "9"

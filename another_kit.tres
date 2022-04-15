@@ -1,0 +1,34 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://addons/native_bullets/utils/animated_texture.gdshader" type="Shader" id=1]
+[ext_resource path="res://addons/native_bullets/kits/basic_bullet_kit.gdns" type="Script" id=2]
+[ext_resource path="res://bullet2.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/default_orientation = 0.0
+shader_param/frames = 1
+shader_param/frame_duration = 0.1
+shader_param/texture_h_frames = 1
+shader_param/texture_v_frames = 1
+shader_param/looping = true
+shader_param/modulate = Color( 1, 1, 1, 1 )
+
+[resource]
+script = ExtResource( 2 )
+texture = ExtResource( 3 )
+bullet_class_name = "Bullet"
+material = SubResource( 2 )
+collisions_enabled = true
+collision_layer = 4
+collision_mask = 0
+collision_shape = SubResource( 1 )
+use_viewport_as_active_rect = true
+active_rect = Rect2( 0, 0, 0, 0 )
+rotate = false
+unique_modulate_component = 0
+data = {
+}
