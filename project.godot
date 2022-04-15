@@ -87,6 +87,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Bullets="*res://addons/native_bullets/bullets.gdns"
+Global="*res://global.tscn"
 
 [display]
 

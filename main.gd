@@ -3,7 +3,7 @@ extends Node
 
 # Declare member variables here. Examples:
 export(PackedScene) var enemy
-# var b = "text"
+var counter := 1.5
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,11 +11,13 @@ func _ready():
 	$Enemy.player = $Player
 	randomize()
 	__spawn()
+	Global.score = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$Label.text = str($Player.timer/(5*60))
+	$CanvasLayer/Label.text = str($Player.timer/(5*60))
+	$CanvasLayer/Label2.text = str(Global.score)
 
 
 func __spawn():
@@ -26,4 +28,5 @@ func __spawn():
 		spawned.position = Vector2(x, y)
 		spawned.player = $Player
 		add_child(spawned)
-		yield(get_tree().create_timer(5.0), "timeout")
+		counter += 1
+		yield(get_tree().create_timer(counter), "timeout")

@@ -73,6 +73,7 @@ func _on_area_shape_entered(area_id, area, area_shape, _local_shape):
 	if not Bullets.is_bullet_existing(area_id, area_shape):
 		if area.get_parent() is Enemy and grasping:
 			area.get_parent().queue_free()
+			get_parent().counter -= 1
 		return
 
 	# Get a BulletID from the area_shape passed in by the engine.

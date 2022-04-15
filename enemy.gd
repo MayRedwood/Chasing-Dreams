@@ -32,7 +32,7 @@ func __shoot():
 	yield(get_tree().create_timer(1.0), "timeout")
 	while true:
 		shoot_at_player()
-		yield(get_tree().create_timer(0.2), "timeout")
+		yield(get_tree().create_timer(0.22), "timeout")
 
 
 func __shoot_2():
@@ -49,7 +49,7 @@ func __shoot_3():
 		for i in range(20):
 			shoot_at_player()
 			yield(get_tree().create_timer(0.075), "timeout")
-		yield(get_tree().create_timer(1.0), "timeout")
+		yield(get_tree().create_timer(2.0), "timeout")
 
 
 func shoot_at_player():
@@ -59,6 +59,7 @@ func shoot_at_player():
 		"velocity": bullet_velocity * 325
 	}
 	Bullets.spawn_bullet(bullet_kit, properties)
+	Global.score += 1
 
 
 func shoot_circle():
@@ -70,3 +71,4 @@ func shoot_circle():
 			"velocity": bullet_velocity * 200
 		}
 		Bullets.spawn_bullet(bullet_kit, properties)
+		Global.score += 1
