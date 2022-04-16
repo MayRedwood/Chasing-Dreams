@@ -40,9 +40,6 @@ bullet_type_2/bullet_kit = ExtResource( 8 )
 bullet_type_2/pool_size = 50
 bullet_type_2/z_index = 50
 
-[node name="Enemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 128, 256 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]

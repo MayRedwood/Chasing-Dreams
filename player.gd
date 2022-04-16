@@ -24,10 +24,10 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
 		__grasp()
 	elif event.is_action_pressed("ui_select"):
-		tween.interpolate_property(self, "speed", speed, SPEED/2.0, 0.2, 2)
+		tween.interpolate_property(self, "speed", speed, SPEED/2.0, 0.2, 1)
 		tween.start()
 	elif event.is_action_released("ui_select"):
-		tween.interpolate_property(self, "speed", speed, SPEED, 0.2, 2)
+		tween.interpolate_property(self, "speed", speed, SPEED, 0.2, 1)
 		tween.start()
 
 
@@ -58,7 +58,7 @@ func get_player_input() -> Vector2:
 func _on_area_shape_entered(area_id, area, area_shape, _local_shape):
 	if not Bullets.is_bullet_existing(area_id, area_shape):
 		if area.get_parent() is Enemy:
-			area.get_parent().queue_free()
+			area.get_parent().die()
 			get_parent().counter -= 1
 			Global.score += 10
 		return
@@ -81,11 +81,11 @@ func reload_scene():
 
 func __grasp():
 	timer -= 15 * 20
-	tween.interpolate_property(self, "modulate:a", modulate.a, 0.5, 0.25, 2)
+	tween.interpolate_property(self, "modulate:a", modulate.a, 0.5, 0.25, 1)
 	tween.start()
 	grasping = true
 	yield(tween, "tween_all_completed")
-	tween.interpolate_property(self, "modulate:a", modulate.a, 1.0, 0.25, 2)
+	tween.interpolate_property(self, "modulate:a", modulate.a, 1.0, 0.25, 1)
 	tween.start()
 	yield(tween, "tween_all_completed")
 	grasping = false
