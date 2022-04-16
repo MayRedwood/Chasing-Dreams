@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://L3Enemy.gd" type="Script" id=1]
+[ext_resource path="res://l3enemy.gd" type="Script" id=1]
 [ext_resource path="res://enemy.tscn" type="PackedScene" id=2]
 
 [node name="L3Enemy" instance=ExtResource( 2 )]

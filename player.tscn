@@ -7,6 +7,7 @@
 radius = 5.0
 
 [node name="Player" type="Node2D"]
+modulate = Color( 1, 0.337255, 0.466667, 1 )
 z_index = 400
 script = ExtResource( 2 )
 

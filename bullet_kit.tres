@@ -15,7 +15,7 @@ shader_param/frame_duration = 0.1
 shader_param/texture_h_frames = 1
 shader_param/texture_v_frames = 1
 shader_param/looping = true
-shader_param/modulate = Color( 1, 1, 1, 1 )
+shader_param/modulate = Color( 0.72549, 0.345098, 0.647059, 1 )
 
 [resource]
 script = ExtResource( 2 )

@@ -9,6 +9,7 @@
 extents = Vector2( 16, 16 )
 
 [node name="Enemy" type="Node2D"]
+modulate = Color( 0.568627, 0.270588, 0.713726, 1 )
 script = ExtResource( 2 )
 bullet_kit = ExtResource( 3 )
 non_collison_kit = ExtResource( 4 )
