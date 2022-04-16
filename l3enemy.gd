@@ -9,12 +9,15 @@ extends Enemy
 # Called when the node enters the scene tree for the first time.
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var rand = randi() % 3
+	var rand = randi() % 4
 	if rand == 1:
 		__shoot()
 		look_at_player = true
 	elif rand == 2:
 		__shoot_3()
+		look_at_player = true
+	elif rand == 3:
+		__shoot_4()
 		look_at_player = true
 	else:
 		__shoot_2()
@@ -48,5 +51,16 @@ func __shoot_3():
 		# warning-ignore: unused_variable
 		for i in range(20):
 			shoot_at_player()
+			yield(get_tree().create_timer(0.075), "timeout")
+		yield(get_tree().create_timer(2.5), "timeout")
+
+
+func __shoot_4():
+	yield(get_tree().create_timer(2.5), "timeout")
+	while true:
+		# warning-ignore: unused_variable
+		for i in range(15):
+			shoot_at_player(deg2rad(30))
+			shoot_at_player(deg2rad(-30))
 			yield(get_tree().create_timer(0.075), "timeout")
 		yield(get_tree().create_timer(2.5), "timeout")

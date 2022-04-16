@@ -9,8 +9,8 @@ export(Resource) var bullet_kit
 export(Resource) var non_collison_kit
 
 
-func shoot_at_player():
-	shoot_purple_bullet((player.global_position - global_position), 300)
+func shoot_at_player(add_angle := 0.0):
+	shoot_purple_bullet((player.global_position - global_position).rotated(add_angle), 300)
 	Global.score += 2
 
 
@@ -36,7 +36,7 @@ func __create_bullet_hitbox(bullet_id):
 	Bullets.spawn_bullet(bullet_kit, properties)
 
 
-func shoot_purple_bullet(direction: Vector2, speed: float, add_angle:float = 0):
+func shoot_purple_bullet(direction: Vector2, speed: float, add_angle: float = 0):
 	if dead:
 		return
 	var bullet_direction = direction.normalized()
