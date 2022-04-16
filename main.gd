@@ -17,7 +17,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	$CanvasLayer/Label.text = str($Player.timer/(5*60))
-	$CanvasLayer/Label2.text = str(Global.score)
+	if Global.score > 3000:
+		$CanvasLayer/Label2.text = "REM Sleep"
+	elif Global.score > 2000:
+		$CanvasLayer/Label2.text = "N3"
+	elif Global.score > 1000:
+		$CanvasLayer/Label2.text = "N2"
+	else:
+		$CanvasLayer/Label2.text = "N1"
 	$CanvasLayer/Label3.text = str(Global.high_score)
 
 
