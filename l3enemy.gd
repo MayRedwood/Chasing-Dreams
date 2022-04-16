@@ -51,7 +51,7 @@ func __shoot_3():
 	yield(get_tree().create_timer(2.5), "timeout")
 	while true:
 		# warning-ignore: unused_variable
-		for i in range(20):
+		for i in range(25):
 			shoot_at_player()
 			yield(get_tree().create_timer(0.075), "timeout")
 		yield(get_tree().create_timer(2.5), "timeout")
@@ -67,8 +67,9 @@ func __shoot_4():
 			yield(get_tree().create_timer(0.075), "timeout")
 		yield(get_tree().create_timer(2.5), "timeout")
 
+
 func __shoot_5():
 	yield(get_tree().create_timer(2.5), "timeout")
 	while true:
 		shoot_at_player(deg2rad(randf() * 360), 300)
-		yield(get_tree().create_timer(randf() / 8), "timeout")
+		yield(get_tree().create_timer(randf() / 6), "timeout")
