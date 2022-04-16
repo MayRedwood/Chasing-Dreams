@@ -9,16 +9,16 @@ export(Resource) var bullet_kit
 export(Resource) var non_collison_kit
 
 
-func shoot_at_player(add_angle := 0.0):
-	shoot_purple_bullet((player.global_position - global_position).rotated(add_angle), 300)
+func shoot_at_player(add_angle := 0.0, speed := 300):
+	shoot_purple_bullet((player.global_position - global_position).rotated(add_angle), speed)
 	Global.score += 2
 
 
-func shoot_circle(n):
+func shoot_circle(n, add_angle := 0.0, speed := 200):
 	for i in range(n):
 		shoot_purple_bullet(
-				(player.global_position - global_position), 200,
-				i * deg2rad(360/n) + deg2rad(360/(2*n))
+				(player.global_position - global_position), speed,
+				i * deg2rad(360/n) + deg2rad(360/(2*n) + add_angle)
 		)
 		Global.score += 2
 

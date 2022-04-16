@@ -9,7 +9,7 @@ extends Enemy
 # Called when the node enters the scene tree for the first time.
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var rand = randi() % 4
+	var rand = randi() % 5
 	if rand == 1:
 		__shoot()
 		look_at_player = true
@@ -19,8 +19,10 @@ func _ready():
 	elif rand == 3:
 		__shoot_4()
 		look_at_player = true
-	else:
+	elif rand == 4:
 		__shoot_2()
+	else:
+		__shoot_5()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,3 +66,9 @@ func __shoot_4():
 			shoot_at_player(deg2rad(-30))
 			yield(get_tree().create_timer(0.075), "timeout")
 		yield(get_tree().create_timer(2.5), "timeout")
+
+func __shoot_5():
+	yield(get_tree().create_timer(2.5), "timeout")
+	while true:
+		shoot_at_player(deg2rad(randf() * 360), 300)
+		yield(get_tree().create_timer(randf() / 8), "timeout")
