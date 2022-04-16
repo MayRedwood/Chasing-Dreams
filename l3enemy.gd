@@ -70,6 +70,11 @@ func __shoot_4():
 
 func __shoot_5():
 	yield(get_tree().create_timer(2.5), "timeout")
+	var i := 0
 	while true:
-		shoot_at_player(deg2rad(randf() * 360), 300)
-		yield(get_tree().create_timer(randf() / 6), "timeout")
+		shoot_circle(3, deg2rad(i))
+		yield(get_tree().create_timer(0.3), "timeout")
+		if i > 360:
+			i = 0
+		else:
+			i += 360/10

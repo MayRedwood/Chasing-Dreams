@@ -17,8 +17,8 @@ func shoot_at_player(add_angle := 0.0, speed := 300):
 func shoot_circle(n, add_angle := 0.0, speed := 200):
 	for i in range(n):
 		shoot_purple_bullet(
-				(player.global_position - global_position), speed,
-				i * deg2rad(360/n) + deg2rad(360/(2*n) + add_angle)
+				(player.global_position - global_position).rotated(add_angle), 
+				speed, i * deg2rad(360/n) + deg2rad(360/(2*n))
 		)
 		Global.score += 2
 
