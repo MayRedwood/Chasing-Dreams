@@ -9,61 +9,16 @@ export(Resource) var bullet_kit
 export(Resource) var non_collison_kit
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	var rand = randi() % 3
-	if rand == 1:
-		__shoot()
-		look_at_player = true
-	elif rand == 2:
-		__shoot_3()
-		look_at_player = true
-	else:
-		__shoot_2()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta):
-	if look_at_player:
-		global_rotation = (player.global_position - global_position).angle()
-	else:
-		global_rotation_degrees += 1
-
-
-func __shoot():
-	yield(get_tree().create_timer(2.5), "timeout")
-	while true:
-		shoot_at_player()
-		yield(get_tree().create_timer(0.27), "timeout")
-
-
-func __shoot_2():
-	yield(get_tree().create_timer(2.5), "timeout")
-	while true:
-		shoot_circle()
-		yield(get_tree().create_timer(0.5), "timeout")
-
-
-func __shoot_3():
-	yield(get_tree().create_timer(2.5), "timeout")
-	while true:
-		# warning-ignore: unused_variable
-		for i in range(20):
-			shoot_at_player()
-			yield(get_tree().create_timer(0.075), "timeout")
-		yield(get_tree().create_timer(2.5), "timeout")
-
-
 func shoot_at_player():
 	shoot_purple_bullet((player.global_position - global_position), 300)
 	Global.score += 2
 
 
-func shoot_circle():
-	for i in range(8):
+func shoot_circle(n):
+	for i in range(n):
 		shoot_purple_bullet(
 				(player.global_position - global_position), 200,
-				i * deg2rad(360/8) + deg2rad(360/16)
+				i * deg2rad(360/n) + deg2rad(360/(2*n))
 		)
 		Global.score += 2
 
