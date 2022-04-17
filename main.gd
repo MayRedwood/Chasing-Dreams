@@ -20,12 +20,13 @@ func _ready():
 	#$ColorRect.color = Global.VIBRANT_ROSE
 	#theme.set_color("font_color", "Label", Global.DARK_PURPLE)
 	#$Enemy.player = $Player
-	start()
+	pass
+	#start()
 
 
 func start():
 	$Tween.interpolate_property(
-			$CanvasLayer/ColorRect2, "color", $CanvasLayer/ColorRect2.modulate, Color("#00ffffff"), 1.0, 1
+			$CanvasLayer/ColorRect2, "color", $CanvasLayer/ColorRect2.modulate, Color("#00000000"), 1.0, 1
 	)
 	$Tween.start()
 	randomize()

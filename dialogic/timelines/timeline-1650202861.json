@@ -23,6 +23,16 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "You are so tired you can barely process that, realize that something is weird, before..."
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "start",
+				"target_node_path": "/root/Main"
+			},
+			"event_id": "dialogic_042"
 		}
 	],
 	"metadata": {
