@@ -11,6 +11,12 @@ var enemy_color := LIGHT_PURPLE
 var bullet_color := DESATURATED_ROSE
 var player_color := VIBRANT_ROSE
 
+var deaths_file := "user://deaths.save"
+var doremy_counter_file := "user://doremy.save"
+var high_score_file := "user://score.save"
+var story_file := "user://story.save"
+var loaded := false
+
 var deaths := -1
 
 var counter := 0.0
@@ -51,3 +57,97 @@ func choose_dialogs() -> String:
 	elif deaths < 4 and not one:
 		return "Intro"
 	return ""
+
+
+func save_files():
+	if not loaded:
+		load_files()
+	else:
+		var file := File.new()
+		# warning-ignore: return_value_discarded
+		file.open(deaths_file, File.WRITE)
+		file.store_var(deaths)
+		file.close()
+		# warning-ignore: return_value_discarded
+		file.open(doremy_counter_file, File.WRITE)
+		file.store_var(doremy_counter)
+		file.close()
+		# warning-ignore: return_value_discarded
+		file.open(high_score_file, File.WRITE)
+		file.store_var(high_score)
+		file.close()
+		# warning-ignore: return_value_discarded
+		file.open(story_file, File.WRITE)
+		if five:
+			file.store_var(5)
+		elif four:
+			file.store_var(4)
+		elif three:
+			file.store_var(3)
+		elif two:
+			file.store_var(2)
+		elif one:
+			file.store_var(1)
+		file.close()
+
+
+func load_files():
+	var file := File.new()
+	if file.file_exists(deaths_file):
+		# warning-ignore: return_value_discarded
+		file.open(deaths_file, File.READ)
+		deaths = file.get_var()
+	else:
+		# warning-ignore: return_value_discarded
+		file.open(deaths_file, File.WRITE)
+		file.store_var(deaths)
+	file.close()
+	if file.file_exists(doremy_counter_file):
+		# warning-ignore: return_value_discarded
+		file.open(doremy_counter_file, File.READ)
+		doremy_counter = file.get_var()
+	else:
+		# warning-ignore: return_value_discarded
+		file.open(doremy_counter_file, File.WRITE)
+		file.store_var(doremy_counter)
+	file.close()
+	if file.file_exists(high_score_file):
+		# warning-ignore: return_value_discarded
+		file.open(high_score_file, File.READ)
+		high_score = file.get_var()
+	else:
+		# warning-ignore: return_value_discarded
+		file.open(high_score_file, File.WRITE)
+		file.store_var(high_score)
+	file.close()
+	if file.file_exists(story_file):
+		# warning-ignore: return_value_discarded
+		file.open(story_file, File.READ)
+		var s = file.get_var()
+		if s >= 5:
+			five = true
+		if s >= 4:
+			four = true
+		if s >= 3:
+			three = true
+		if s >= 2:
+			two = true
+		if s >= 1:
+			one = true
+	else:
+		# warning-ignore: return_value_discarded
+		file.open(story_file, File.WRITE)
+		if five:
+			file.store_var(5)
+		elif four:
+			file.store_var(4)
+		elif three:
+			file.store_var(3)
+		elif two:
+			file.store_var(2)
+		elif one:
+			file.store_var(1)
+		else:
+			file.store_var(-1)
+	file.close()
+	loaded = true
