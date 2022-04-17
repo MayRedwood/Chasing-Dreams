@@ -33,17 +33,15 @@ func _physics_process(_delta):
 func __shoot():
 	yield(get_tree().create_timer(2.5), "timeout")
 	while true:
-		shoot_at_player(deg2rad(-45), 200)
 		shoot_at_player(0, 200)
-		shoot_at_player(deg2rad(45), 200)
-		yield(get_tree().create_timer(0.4), "timeout")
+		yield(get_tree().create_timer(0.6), "timeout")
 
 
 func __shoot_2():
 	yield(get_tree().create_timer(2.5), "timeout")
 	while true:
 		shoot_circle(6, 0, 250)
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(1.0), "timeout")
 
 
 func __shoot_3_d(): # Deprecated
@@ -60,18 +58,17 @@ func __shoot_4():
 	yield(get_tree().create_timer(2.5), "timeout")
 	while true:
 		# warning-ignore: unused_variable
-		for i in range(12):
-			shoot_at_player(deg2rad(3))
-			shoot_at_player(deg2rad(-3))
+		for i in range(4):
+			shoot_at_player(deg2rad(i * 20), 200)
+			shoot_at_player(deg2rad(-i * 20), 200)
 			yield(get_tree().create_timer(0.075), "timeout")
 		yield(get_tree().create_timer(2.5), "timeout")
 
 
 func __shoot_5():
 	yield(get_tree().create_timer(2.5), "timeout")
-	var n := -7 * 360/8
 	while true:
-		shoot_at_player(deg2rad(n), 250)
-		n += 360/8
-		n = n % 360
-		yield(get_tree().create_timer(0.1), "timeout")
+		var rand := randf() * 360
+		shoot_at_player(deg2rad(rand), 225)
+		shoot_at_player(deg2rad(-rand), 225)
+		yield(get_tree().create_timer(0.4), "timeout")
