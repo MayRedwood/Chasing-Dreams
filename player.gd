@@ -5,7 +5,7 @@ const SPEED := 300
 const ACCEL := 0.8
 var speed: float = SPEED
 
-const MAX_TIMER := 15 * 60
+const MAX_TIMER := 120
 var timer := MAX_TIMER
 
 var grasping := false
@@ -21,7 +21,7 @@ func _ready():
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept") and timer == MAX_TIMER:
 		__grasp()
 	elif event.is_action_pressed("ui_select"):
 		tween.interpolate_property(self, "speed", speed, SPEED/2.0, 0.2, 1)
@@ -38,10 +38,7 @@ func _physics_process(delta):
 		)
 	
 	if timer < MAX_TIMER:
-		timer += 2
-		if timer <= 15 * 20:
-			# warning-ignore: return_value_discarded
-			reload_scene()
+		timer += 1
 	
 	position += velocity
 	position.x = clamp(position.x, 0, get_viewport_rect().size.x)
@@ -80,7 +77,7 @@ func reload_scene():
 
 
 func __grasp():
-	timer -= 15 * 20
+	timer -= 120
 	tween.interpolate_property(self, "modulate:a", modulate.a, 0.5, 0.25, 1)
 	tween.start()
 	grasping = true
