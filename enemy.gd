@@ -53,6 +53,8 @@ func shoot_purple_bullet(direction: Vector2, speed: float, add_angle: float = 0)
 
 
 func die():
+	Global.counter -= 1
+	Global.score += 10
 	dead = true
 	$Tween.interpolate_property(self, "modulate:a", modulate.a, 0, 0.3, 1)
 	$Tween.start()

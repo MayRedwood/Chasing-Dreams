@@ -9,7 +9,6 @@ var enemy
 export(Resource) var bullet_kit
 export(Resource) var non_collison_kit
 export(Resource) var theme
-var counter := 0.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,6 +19,7 @@ func _ready():
 	#$ColorRect.color = Global.VIBRANT_ROSE
 	#theme.set_color("font_color", "Label", Global.DARK_PURPLE)
 	#$Enemy.player = $Player
+	Global.counter = 0.0
 	Global.deaths += 1
 	var string = Global.choose_dialogs()
 	if string != "":
@@ -43,7 +43,7 @@ func start():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$CanvasLayer/Label.text = str(Global.deaths)
+	$CanvasLayer/Label.text = str(Global.counter)
 	if Global.score > 4000:
 		$CanvasLayer/Label2.text = "REM Sleep"
 	elif Global.score > 1500:
@@ -60,19 +60,27 @@ func _process(_delta):
 
 func __spawn():
 	while is_inside_tree():
-		var x := randi() % 1025
-		var y := randi() % 601
-		var spawned = enemy.instance()
-		add_child(spawned)
-		var goal = Vector2(x, y)
-		spawned.position = spawn_offscreen(goal)
-		spawned.get_node("Tween").interpolate_property(
-				spawned, "position", spawned.position, goal, 3.0, 1
-		)
-		spawned.get_node("Tween").start()
-		spawned.player = $Player
-		counter += 1
-		yield(get_tree().create_timer(counter/2), "timeout")
+		spawn_enemy(enemy)
+		if Global.counter > 0:
+			yield(get_tree().create_timer(Global.counter/2), "timeout")
+
+
+func spawn_enemy(enem):
+	var x := randi() % 1025
+	var y := randi() % 601
+	var spawned = enem.instance()
+	add_child(spawned)
+	var goal = Vector2(x, y)
+	spawned.position = spawn_offscreen(goal)
+	spawned.get_node("Tween").interpolate_property(
+			spawned, "position", spawned.position, goal, 3.0, 1
+	)
+	spawned.get_node("Tween").start()
+	spawned.player = $Player
+	if spawned is L4Enemy:
+		Global.counter = 1.5
+	else:
+		Global.counter += 1
 
 
 func spawn_offscreen(goal: Vector2):

@@ -13,6 +13,8 @@ var player_color := VIBRANT_ROSE
 
 var deaths := -1
 
+var counter := 0.0
+
 var score: int
 var high_score: int
 

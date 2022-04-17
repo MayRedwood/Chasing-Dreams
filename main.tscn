@@ -34,17 +34,17 @@ position = Vector2( 512, 320 )
 [node name="BulletsEnvironment" type="Node" parent="."]
 script = ExtResource( 4 )
 bullet_kits = [ ExtResource( 3 ), ExtResource( 7 ), ExtResource( 8 ) ]
-pools_sizes = [ 500, null, 50 ]
+pools_sizes = [ 1500, null, 1500 ]
 z_indices = [ 500, null, 50 ]
 bullet_types_amount = 3
 bullet_type_0/bullet_kit = ExtResource( 3 )
-bullet_type_0/pool_size = 500
+bullet_type_0/pool_size = 1500
 bullet_type_0/z_index = 500
 bullet_type_1/bullet_kit = ExtResource( 7 )
 bullet_type_1/pool_size = null
 bullet_type_1/z_index = null
 bullet_type_2/bullet_kit = ExtResource( 8 )
-bullet_type_2/pool_size = 50
+bullet_type_2/pool_size = 1500
 bullet_type_2/z_index = 50
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
