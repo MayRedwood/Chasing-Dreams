@@ -36,7 +36,8 @@ func __shoot():
 		shoot_at_player(deg2rad(-45), 200)
 		shoot_at_player(0, 200)
 		shoot_at_player(deg2rad(45), 200)
-		yield(get_tree().create_timer(0.4), "timeout")
+		shoot_at_player(deg2rad(180), 200)
+		yield(get_tree().create_timer(0.8), "timeout")
 
 
 func __shoot_2():

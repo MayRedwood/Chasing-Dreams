@@ -2,7 +2,10 @@ extends Node
 
 
 # Declare member variables here. Examples:
-export(PackedScene) var enemy
+export(PackedScene) var enemy_l1
+export(PackedScene) var enemy_l2
+export(PackedScene) var enemy_l3
+var enemy
 export(Resource) var bullet_kit
 export(Resource) var non_collison_kit
 export(Resource) var theme
@@ -18,6 +21,7 @@ func _ready():
 	#theme.set_color("font_color", "Label", Global.DARK_PURPLE)
 	#$Enemy.player = $Player
 	randomize()
+	enemy = enemy_l1
 	__spawn()
 	Global.score = 0
 
@@ -25,14 +29,17 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	$CanvasLayer/Label.text = str($Player.timer/120)
-	if Global.score > 3000:
+	if Global.score > 4000:
 		$CanvasLayer/Label2.text = "REM Sleep"
-	elif Global.score > 2000:
+	elif Global.score > 1500:
 		$CanvasLayer/Label2.text = "N3"
-	elif Global.score > 1000:
+		enemy = enemy_l3
+	elif Global.score > 400:
 		$CanvasLayer/Label2.text = "N2"
+		enemy = enemy_l2
 	else:
 		$CanvasLayer/Label2.text = "N1"
+		enemy = enemy_l1
 	$CanvasLayer/Label3.text = str(Global.high_score)
 
 
