@@ -28,6 +28,10 @@ func _ready():
 	Global.deaths += 1
 	var string = Global.choose_dialogs()
 	if string != "":
+		$Tween.interpolate_property(
+			Music, "volume_db", Music.volume_db, -80, 2.0, 1
+		)
+		$Tween.start()
 		var dialogue = Dialogic.start(string)
 		add_child(dialogue)
 	else:
@@ -38,6 +42,9 @@ func _ready():
 func start():
 	$Tween.interpolate_property(
 			$CanvasLayer/ColorRect2, "color", $CanvasLayer/ColorRect2.modulate, Color("#00000000"), 1.0, 1
+	)
+	$Tween.interpolate_property(
+			Music, "volume_db", Music.volume_db, -5, 2.0, 1
 	)
 	$Tween.start()
 	randomize()
