@@ -52,8 +52,6 @@ func start():
 	randomize()
 	enemy = enemy_l1
 	__spawn()
-	if Global.score > Global.high_score:
-		Global.high_score = Global.score
 	Global.score = 0
 
 
