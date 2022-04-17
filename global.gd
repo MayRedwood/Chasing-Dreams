@@ -11,10 +11,8 @@ var enemy_color := LIGHT_PURPLE
 var bullet_color := DESATURATED_ROSE
 var player_color := VIBRANT_ROSE
 
-var deaths_file := "user://deaths.save"
-var doremy_counter_file := "user://doremy.save"
-var high_score_file := "user://score.save"
-var story_file := "user://story.save"
+var save_path := "user://save.res"
+var save_0_path := "res://save0.res"
 var loaded := false
 
 var deaths := -1
@@ -23,8 +21,8 @@ var counter := 0.0
 
 var doremy_counter := 1
 
-var score: int
-var high_score: int
+var score := 0
+var high_score := 0
 
 var one := false
 var two := false
@@ -63,91 +61,40 @@ func save_files():
 	if not loaded:
 		load_files()
 	else:
-		var file := File.new()
-		# warning-ignore: return_value_discarded
-		file.open(deaths_file, File.WRITE)
-		file.store_var(deaths)
-		file.close()
-		# warning-ignore: return_value_discarded
-		file.open(doremy_counter_file, File.WRITE)
-		file.store_var(doremy_counter)
-		file.close()
-		# warning-ignore: return_value_discarded
-		file.open(high_score_file, File.WRITE)
-		file.store_var(high_score)
-		file.close()
-		# warning-ignore: return_value_discarded
-		file.open(story_file, File.WRITE)
-		if five:
-			file.store_var(5)
-		elif four:
-			file.store_var(4)
-		elif three:
-			file.store_var(3)
-		elif two:
-			file.store_var(2)
-		elif one:
-			file.store_var(1)
-		file.close()
+		var save_data = ResourceLoader.load(save_0_path).duplicate()
+		save_data.deaths = deaths
+		save_data.doremy_counter = doremy_counter
+		save_data.high_score = high_score
+		save_data.one = one
+		save_data.two = two
+		save_data.three = three
+		save_data.four = four
+		save_data.five = five
+		var e = ResourceSaver.save(save_path, save_data)
+		print(e)
+		if e != 0:
+			if e > null:
+				pass
+
 
 
 func load_files():
-	var file := File.new()
-	if file.file_exists(deaths_file):
-		# warning-ignore: return_value_discarded
-		file.open(deaths_file, File.READ)
-		deaths = file.get_var()
-	else:
-		# warning-ignore: return_value_discarded
-		file.open(deaths_file, File.WRITE)
-		file.store_var(deaths)
-	file.close()
-	if file.file_exists(doremy_counter_file):
-		# warning-ignore: return_value_discarded
-		file.open(doremy_counter_file, File.READ)
-		doremy_counter = file.get_var()
-	else:
-		# warning-ignore: return_value_discarded
-		file.open(doremy_counter_file, File.WRITE)
-		file.store_var(doremy_counter)
-	file.close()
-	if file.file_exists(high_score_file):
-		# warning-ignore: return_value_discarded
-		file.open(high_score_file, File.READ)
-		high_score = file.get_var()
-	else:
-		# warning-ignore: return_value_discarded
-		file.open(high_score_file, File.WRITE)
-		file.store_var(high_score)
-	file.close()
-	if file.file_exists(story_file):
-		# warning-ignore: return_value_discarded
-		file.open(story_file, File.READ)
-		var s = file.get_var()
-		if s >= 5:
-			five = true
-		if s >= 4:
-			four = true
-		if s >= 3:
-			three = true
-		if s >= 2:
-			two = true
-		if s >= 1:
-			one = true
-	else:
-		# warning-ignore: return_value_discarded
-		file.open(story_file, File.WRITE)
-		if five:
-			file.store_var(5)
-		elif four:
-			file.store_var(4)
-		elif three:
-			file.store_var(3)
-		elif two:
-			file.store_var(2)
-		elif one:
-			file.store_var(1)
-		else:
-			file.store_var(-1)
-	file.close()
 	loaded = true
+	var save_data: Resource
+	var file := File.new()
+	if file.file_exists(save_path):
+		save_data = ResourceLoader.load(save_path)
+		deaths = save_data.deaths
+		doremy_counter = save_data.doremy_counter
+		high_score = save_data.high_score
+		one = save_data.one
+		two = save_data.two
+		three = save_data.three
+		four = save_data.four
+		five = save_data.five
+	else:
+		save_data = ResourceLoader.load(save_0_path).duplicate()
+		var e = ResourceSaver.save(save_path, save_data)
+		if e != 0:
+			if e > null:
+				pass

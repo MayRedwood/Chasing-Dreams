@@ -26,8 +26,8 @@ func _ready():
 	Global.score = 0
 	Global.counter = 0.0
 	Global.deaths += 1
-	Global.save_files()
 	var string = Global.choose_dialogs()
+	Global.save_files()
 	if string != "":
 		$Tween.interpolate_property(
 			Music, "volume_db", Music.volume_db, -80, 2.0, 1
