@@ -4,7 +4,7 @@
 			"character": "character-1650202836.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "It was hard to sleep last night.\nYou kept having the same dream.\nAnd you kept waking up from it in the same way.\nIt's very rare for your dreams to repeat, much less in the structured way from last night.\nAnd it just felt... Weirdly real.\nYou put those thoughts away as you get ready for another day."
+			"text": "It was hard to sleep last night.\nYou kept having the same dream.\nAnd you kept waking up from it in the same way.\nIt's very rare for your dreams to repeat like that.\nAnd it all just felt... Weirdly real.\n...\nThe day passes, and night arrives yet again."
 		},
 		{
 			"call_node": {
