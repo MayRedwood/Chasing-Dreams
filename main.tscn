@@ -5,13 +5,16 @@
 [ext_resource path="res://bullet_kit.tres" type="Resource" id=3]
 [ext_resource path="res://addons/native_bullets/bullets_environment.gd" type="Script" id=4]
 [ext_resource path="res://l3enemy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://theme.tres" type="Theme" id=6]
 [ext_resource path="res://non-collision_bullets.tres" type="Resource" id=7]
 [ext_resource path="res://another_kit.tres" type="Resource" id=8]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
 enemy = ExtResource( 5 )
+bullet_kit = ExtResource( 3 )
+non_collison_kit = ExtResource( 8 )
+theme = ExtResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1024.0
@@ -44,10 +47,9 @@ bullet_type_2/z_index = 50
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 margin_left = 8.0
-margin_right = 73.0
-margin_bottom = 106.0
-custom_colors/font_color = Color( 1, 0.337255, 0.466667, 1 )
-custom_fonts/font = ExtResource( 6 )
+margin_right = 448.0
+margin_bottom = 64.0
+theme = ExtResource( 6 )
 text = "9"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -60,8 +62,7 @@ margin_left = 8.0
 margin_top = -48.0
 margin_right = 264.0
 margin_bottom = 5.0
-custom_colors/font_color = Color( 1, 0.337255, 0.466667, 1 )
-custom_fonts/font = ExtResource( 6 )
+theme = ExtResource( 6 )
 text = "9"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -76,8 +77,7 @@ margin_left = -264.0
 margin_top = -48.0
 margin_right = -8.0
 margin_bottom = 5.0
-custom_colors/font_color = Color( 1, 0.337255, 0.466667, 1 )
-custom_fonts/font = ExtResource( 6 )
+theme = ExtResource( 6 )
 text = "9"
 align = 2
 __meta__ = {

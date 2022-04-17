@@ -3,11 +3,19 @@ extends Node
 
 # Declare member variables here. Examples:
 export(PackedScene) var enemy
+export(Resource) var bullet_kit
+export(Resource) var non_collison_kit
+export(Resource) var theme
 var counter := 0.0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#$Player.modulate = Global.DARK_PURPLE
+	#bullet_kit.material.set_shader_param("modulate", Global.LIGHT_PURPLE)
+	#non_collison_kit.material.set_shader_param("modulate", Global.DESATURATED_ROSE)
+	#$ColorRect.color = Global.VIBRANT_ROSE
+	#theme.set_color("font_color", "Label", Global.DARK_PURPLE)
 	#$Enemy.player = $Player
 	randomize()
 	__spawn()
