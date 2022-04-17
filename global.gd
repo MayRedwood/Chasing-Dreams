@@ -11,6 +11,7 @@ var enemy_color := LIGHT_PURPLE
 var bullet_color := DESATURATED_ROSE
 var player_color := VIBRANT_ROSE
 
+var deaths := -1
 
 var score: int
 var high_score: int

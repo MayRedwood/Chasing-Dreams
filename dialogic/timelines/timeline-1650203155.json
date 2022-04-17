@@ -5,6 +5,16 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Yet again.\nThis can't be normal now. These dreams you're having, they're too specific. And you can't think of anything happening in your life that would lead to dreaming this.\nYou gotta investigate! But where to start...\nWell, the way those weird... things keep shooting at you remind you of something.\nA few years ago, when you would still call yourself a young lady, you were really into... Arcade shooting games.\nAnd, well, now you're really grateful for the skills you got from that. If it weren't for them, you wouldn't be getting any resemblance of peaceful sleep.\nThat's really the only \"lead\" you've got.\n... Assuming there's anything to investigate in the first place.\nEither way, you've been in need for a distraction from life."
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "start",
+				"target_node_path": "/root/Main"
+			},
+			"event_id": "dialogic_042"
 		}
 	],
 	"metadata": {

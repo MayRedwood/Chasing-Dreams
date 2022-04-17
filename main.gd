@@ -20,7 +20,27 @@ func _ready():
 	#$ColorRect.color = Global.VIBRANT_ROSE
 	#theme.set_color("font_color", "Label", Global.DARK_PURPLE)
 	#$Enemy.player = $Player
-	pass
+	Global.deaths += 1
+	if Global.deaths < 4:
+		var new_dialog = Dialogic.start("Intro")
+		$CanvasLayer.add_child(new_dialog)
+	elif Global.deaths == 10:
+		var new_dialog = Dialogic.start("One")
+		$CanvasLayer.add_child(new_dialog)
+	elif Global.deaths == 20:
+		var new_dialog = Dialogic.start("Two")
+		$CanvasLayer.add_child(new_dialog)
+	elif Global.deaths == 30:
+		var new_dialog = Dialogic.start("Three")
+		$CanvasLayer.add_child(new_dialog)
+	elif Global.deaths == 40:
+		var new_dialog = Dialogic.start("Four")
+		$CanvasLayer.add_child(new_dialog)
+	elif Global.deaths == 50:
+		var new_dialog = Dialogic.start("Five")
+		$CanvasLayer.add_child(new_dialog)
+	else:
+		start()
 	#start()
 
 
@@ -39,7 +59,7 @@ func start():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$CanvasLayer/Label.text = str($Player.timer/120)
+	$CanvasLayer/Label.text = str(Global.deaths)
 	if Global.score > 4000:
 		$CanvasLayer/Label2.text = "REM Sleep"
 	elif Global.score > 1500:

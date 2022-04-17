@@ -66,6 +66,7 @@ func _on_area_shape_entered(area_id, area, area_shape, _local_shape):
 
 	#Bullets.call_deferred("release_bullet", bullet_id)
 	if not grasping:
+		grasping = true
 		reload_scene()
 
 
