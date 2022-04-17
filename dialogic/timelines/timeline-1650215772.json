@@ -1,0 +1,15 @@
+{
+	"events": [
+		{
+			"character": "character-1650215531.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It doesn't seem like you understand.\nI am the ruler of this world.\nYou don't belong here. Have I not made it clear you gain nothing from challening me?\nWhat do you repeat yourself so much for?\nDon't answer. It doesn't matter.\nYou have repeatedly broke the balance of this world.\nHow did you even get here? I haven't seen your actual dream self in ages.\nI've been trying to fix this situation by getting her back here, you know.\nBut if that won't suffice, I can stop you from dreaming entirely.\nAnd you leave me no other choice.\nGood night."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1650215772.json",
+		"name": "DoremyX"
+	}
+}

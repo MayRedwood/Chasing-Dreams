@@ -1,0 +1,15 @@
+{
+	"events": [
+		{
+			"character": "character-1650215531.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "My, you're a persistent one.\nAnd you're becoming quite good at dealing with the fairies.\nYou already know what I'm here to do.\nAnd I repeat: you gain no benefit from dodging."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1650215690.json",
+		"name": "Doremy3"
+	}
+}

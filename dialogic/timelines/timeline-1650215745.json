@@ -1,0 +1,15 @@
+{
+	"events": [
+		{
+			"character": "character-1650215531.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This is your final warning.\nStop."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1650215745.json",
+		"name": "Doremy4"
+	}
+}

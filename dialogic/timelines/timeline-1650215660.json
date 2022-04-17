@@ -1,0 +1,15 @@
+{
+	"events": [
+		{
+			"character": "character-1650215531.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh, here again?\nI'm sorry. Your dreams will return to normal as soon as I get everything back under control.\nLet's wake up, shall we?\nPlease do not dodge this time, for my sake and yours."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1650215660.json",
+		"name": "Doremy2"
+	}
+}
