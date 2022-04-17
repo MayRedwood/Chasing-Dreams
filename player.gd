@@ -77,11 +77,11 @@ func reload_scene():
 
 func __grasp():
 	timer -= 120
-	tween.interpolate_property(self, "modulate:a", modulate.a, 0.5, 0.25, 1)
+	tween.interpolate_property(self, "modulate:a", modulate.a, 0.2, 0.25, 1)
 	tween.start()
 	grasping = true
-	yield(tween, "tween_all_completed")
+	yield(get_tree().create_timer(0.25), "timeout")
 	tween.interpolate_property(self, "modulate:a", modulate.a, 1.0, 0.25, 1)
 	tween.start()
-	yield(tween, "tween_all_completed")
+	yield(get_tree().create_timer(0.25), "timeout")
 	grasping = false
