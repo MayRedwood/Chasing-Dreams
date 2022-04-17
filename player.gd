@@ -21,7 +21,7 @@ func _ready():
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_accept") and timer == MAX_TIMER:
+	if event.is_action_pressed("ui_accept") and timer >= 0.8 * MAX_TIMER:
 		__grasp()
 	elif event.is_action_pressed("ui_select"):
 		tween.interpolate_property(self, "speed", speed, SPEED/2.0, 0.2, 1)
