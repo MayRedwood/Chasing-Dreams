@@ -52,6 +52,7 @@ bullet_type_2/z_index = 50
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
 margin_left = 8.0
 margin_right = 448.0
 margin_bottom = 64.0
@@ -75,6 +76,7 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="CanvasLayer"]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
