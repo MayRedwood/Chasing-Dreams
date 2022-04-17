@@ -160,6 +160,7 @@ config/icon="res://icon.png"
 
 Bullets="*res://addons/native_bullets/bullets.gdns"
 Global="*res://global.tscn"
+Music="*res://music.tscn"
 
 [display]
 
