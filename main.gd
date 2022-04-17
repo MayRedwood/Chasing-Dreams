@@ -128,7 +128,7 @@ func doremy_dialog():
 	yield(get_tree().create_timer(2.0), "timeout")
 	var doremy_dialog = Dialogic.start("Doremy" + str(Global.doremy_counter))
 	add_child(doremy_dialog)
-	if Global.doremy_counter < 5:
+	if Global.doremy_counter < 4:
 		Global.doremy_counter += 1
 
 
@@ -144,6 +144,7 @@ func end():
 		node.die()
 	end_started = true
 	doremy_active = true
+	yield(get_tree().create_timer(2.0), "timeout")
 	var doremy_dialogue = Dialogic.start("DoremyX")
 	add_child(doremy_dialogue)
 

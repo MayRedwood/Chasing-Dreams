@@ -29,6 +29,8 @@ func _unhandled_input(event):
 	elif event.is_action_released("ui_select"):
 		tween.interpolate_property(self, "speed", speed, SPEED, 0.2, 1)
 		tween.start()
+	elif event.is_action_pressed("ui_home"):
+		Global.score = 4000
 
 
 func _physics_process(delta):
