@@ -1,0 +1,15 @@
+{
+	"events": [
+		{
+			"character": "character-1650202836.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You did some research.\nAlthough, yes, your dreams remind you of the shoot'em'ups you used to play...\nThey're really more akin to bullet hell games.\n(Which, to be fair, is a subgenre of shoot'em'up.)\nBut that's not really the interesting part.\nYou discovered that bullet hells have mythological precedence.\nAll throughout the world, but more concetrated in Japan, mythological creatures have been described as attacking with barrages of projectiles.\nIt's not common that this is a relevant part of any myth, but...\nIt's there.\nCould it be...?"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1650203203.json",
+		"name": "Three"
+	}
+}

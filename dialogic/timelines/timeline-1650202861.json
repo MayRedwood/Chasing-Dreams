@@ -1,0 +1,33 @@
+{
+	"events": [
+		{
+			"character": "character-1650202836.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You can't fall asleep."
+		},
+		{
+			"character": "character-1650202836.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You want to, but it seems impossible."
+		},
+		{
+			"character": "character-1650202836.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You're having the same weird dream, over and over again, every time you try."
+		},
+		{
+			"character": "character-1650202836.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You are so tired you can barely process that, realize that something is weird, before..."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1650202861.json",
+		"name": "Intro"
+	}
+}

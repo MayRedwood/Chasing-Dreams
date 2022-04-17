@@ -1,0 +1,15 @@
+{
+	"events": [
+		{
+			"character": "character-1650202836.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That was... weird.\nYou definitely heard someone in there.\nThey said something about that world being in chaos.\nAnd they also mentioned...\n... Fairies, huh?\nSo you were right.\nYou were right about the connection between your dreams, bullet hells, and mythology.\nIt's...\nYou're... Happy!\nYou're relieved! You're relieved that what you were chasing after, this once, didn't disappear before your eyes.\nAnd you will keep chasing after it.\nEven if in your dreams, every fairy you chase disappears when you get close, you will keep chasing them.\nIn the hopes that, one time, one of these days, they will take you with them.\nIt's all you can do now, hope. You can't do anything else.\nWhich is so, so\nInfuriating.\nThe world around you is dying! Things get worse every day! Everything you think you know turns out to be wrong!\nAnd right underneath everyone's noses, there has been this magical reality we've denied ourselves access!\nAnd the only people who would agree with you are distrusted by everyone else.\nSome with good reason! Some people you had to dig up in your research were charlatans, racists, or otherwise weird and bad.\nBut it all makes too much sense to not be true!\nYoukai sightings in Japan have been in ridiculously low numbers since the second half of the 19th century. They are the case zero of fantastical sightings decreasing around the world.\nAnd, again in Japan, the people who get interested in that stuff often just... disappear.\nThey come back only sometimes.\nIt all points towards... Something, in Japan, that's causing this. Whatever it is, it has to be magical. It has to be fantastical.\nIt has to show this disgraced world is not the only thing there is.\nIf there really is a better place out there, you want to be part of it. Even if it means leaving it all behind.\nIf you can't do that, you want to know whether it exists, for sure.\nBecause then, hopefully, it will at least stop haunting you."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1650203294.json",
+		"name": "Five"
+	}
+}

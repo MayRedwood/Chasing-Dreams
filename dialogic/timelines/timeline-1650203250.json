@@ -1,0 +1,15 @@
+{
+	"events": [
+		{
+			"character": "character-1650202836.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Modern conceptions on dreams are pretty, well, modern.\nIn fact, for a very long time, it was believed dreams were revelations of truths, or some form of divine messages.\nScience, because of its aversion to the supernatural and undemonstrable, goes against that idea.\nAnd, well...\nScience essentially built the modern world. The technological innovations who shape and have shaped the Earth for centuries came about due to prior cientific research.\nBut science is kind of failing you right now.\nAnd science is not the only respected area of knowledge. There is an ancient philosophical argument, that the existence of dreams, and the way we experience consciousness within, could be an indication that our real world is a dream.\nMaybe reality is just, a really deep well of dreams stacked on top of dreams.\nThat's scary. And it's scary that you can't prove it wrong.\nScience dismisses what cannot be proven wrong... But then again, science is failing you.\nThe idea that... The consciousness you experience when dreaming is not your own is scary."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.1",
+		"file": "timeline-1650203250.json",
+		"name": "Four"
+	}
+}
