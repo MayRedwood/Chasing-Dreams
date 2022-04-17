@@ -5,6 +5,16 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "It doesn't seem like you understand.\nI am the ruler of this world.\nYou don't belong here. Have I not made it clear you gain nothing from challening me?\nWhat do you repeat yourself so much for?\nDon't answer. It doesn't matter.\nYou have repeatedly broke the balance of this world.\nHow did you even get here? I haven't seen your actual dream self in ages.\nI've been trying to fix this situation by getting her back here, you know.\nBut if that won't suffice, I can stop you from dreaming entirely.\nAnd you leave me no other choice.\nGood night."
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "quit",
+				"target_node_path": "/root/Main/"
+			},
+			"event_id": "dialogic_042"
 		}
 	],
 	"metadata": {

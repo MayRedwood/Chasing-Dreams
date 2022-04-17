@@ -9,6 +9,7 @@ export(PackedScene) var enemy_l4
 var enemy
 var doremy_started := false
 var doremy_active := false
+var end_started := false
 export(Resource) var bullet_kit
 export(Resource) var non_collison_kit
 export(Resource) var theme
@@ -47,7 +48,11 @@ func start():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	$CanvasLayer/Label.text = str(Global.counter)
-	if Global.score > 4000:
+	if Global.score > 7000:
+		$CanvasLayer/Label2.text = ""
+		if not end_started:
+			end()
+	elif Global.score > 4000:
 		$CanvasLayer/Label2.text = "REM Sleep"
 		if (not doremy_started) and Global.four:
 			doremy_dialog()
@@ -124,3 +129,17 @@ func despawn_doremy():
 	doremy_active = false
 	enemy = enemy_l4
 	__spawn()
+
+
+func end():
+	$Player.grasping = true
+	for node in get_tree().get_nodes_in_group("enemies"):
+		node.die()
+	end_started = true
+	doremy_active = true
+	var doremy_dialogue = Dialogic.start("DoremyX")
+	add_child(doremy_dialogue)
+
+
+func quit():
+	get_tree().quit()
