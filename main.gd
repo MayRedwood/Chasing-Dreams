@@ -20,9 +20,19 @@ func _ready():
 	#$ColorRect.color = Global.VIBRANT_ROSE
 	#theme.set_color("font_color", "Label", Global.DARK_PURPLE)
 	#$Enemy.player = $Player
+	start()
+
+
+func start():
+	$Tween.interpolate_property(
+			$CanvasLayer/ColorRect2, "color", $CanvasLayer/ColorRect2.modulate, Color("#00ffffff"), 1.0, 1
+	)
+	$Tween.start()
 	randomize()
 	enemy = enemy_l1
 	__spawn()
+	if Global.score > Global.high_score:
+		Global.high_score = Global.score
 	Global.score = 0
 
 

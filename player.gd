@@ -71,8 +71,6 @@ func _on_area_shape_entered(area_id, area, area_shape, _local_shape):
 
 func reload_scene():
 	#var file := File.new()
-	if Global.score > Global.high_score:
-		Global.high_score = Global.score
 	get_tree().call_deferred("reload_current_scene")
 
 
