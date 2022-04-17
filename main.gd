@@ -21,24 +21,10 @@ func _ready():
 	#theme.set_color("font_color", "Label", Global.DARK_PURPLE)
 	#$Enemy.player = $Player
 	Global.deaths += 1
-	if Global.deaths < 4:
-		var new_dialog = Dialogic.start("Intro")
-		$CanvasLayer.add_child(new_dialog)
-	elif Global.deaths == 10:
-		var new_dialog = Dialogic.start("One")
-		$CanvasLayer.add_child(new_dialog)
-	elif Global.deaths == 20:
-		var new_dialog = Dialogic.start("Two")
-		$CanvasLayer.add_child(new_dialog)
-	elif Global.deaths == 30:
-		var new_dialog = Dialogic.start("Three")
-		$CanvasLayer.add_child(new_dialog)
-	elif Global.deaths == 40:
-		var new_dialog = Dialogic.start("Four")
-		$CanvasLayer.add_child(new_dialog)
-	elif Global.deaths == 50:
-		var new_dialog = Dialogic.start("Five")
-		$CanvasLayer.add_child(new_dialog)
+	var string = Global.choose_dialogs()
+	if string != "":
+		var dialogue = Dialogic.start(string)
+		add_child(dialogue)
 	else:
 		start()
 	#start()
