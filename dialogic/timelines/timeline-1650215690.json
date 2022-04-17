@@ -5,6 +5,16 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "My, you're a persistent one.\nAnd you're becoming quite good at dealing with the fairies.\nYou already know what I'm here to do.\nAnd I repeat: you gain no benefit from dodging."
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "despawn_doremy",
+				"target_node_path": "/root/Main/"
+			},
+			"event_id": "dialogic_042"
 		}
 	],
 	"metadata": {

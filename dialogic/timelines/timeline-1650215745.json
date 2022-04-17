@@ -5,6 +5,16 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "This is your final warning.\nStop."
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "despawn_doremy",
+				"target_node_path": "/root/Main/"
+			},
+			"event_id": "dialogic_042"
 		}
 	],
 	"metadata": {

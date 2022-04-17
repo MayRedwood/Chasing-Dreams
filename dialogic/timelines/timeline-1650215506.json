@@ -5,6 +5,16 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Oh?\nYou're not supposed to be here.\nThings in this world have been so out of control lately...\nAnd, on top of that, it seems the fairies decided to play a prank on you.\nI'll have to look into your situation.\nFor now, it's time to wake up."
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "despawn_doremy",
+				"target_node_path": "/root/Main/"
+			},
+			"event_id": "dialogic_042"
 		}
 	],
 	"metadata": {

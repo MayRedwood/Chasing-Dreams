@@ -5,7 +5,10 @@ extends Node
 export(PackedScene) var enemy_l1
 export(PackedScene) var enemy_l2
 export(PackedScene) var enemy_l3
+export(PackedScene) var enemy_l4
 var enemy
+var doremy_started := false
+var doremy_active := false
 export(Resource) var bullet_kit
 export(Resource) var non_collison_kit
 export(Resource) var theme
@@ -19,6 +22,7 @@ func _ready():
 	#$ColorRect.color = Global.VIBRANT_ROSE
 	#theme.set_color("font_color", "Label", Global.DARK_PURPLE)
 	#$Enemy.player = $Player
+	Global.score = 0
 	Global.counter = 0.0
 	Global.deaths += 1
 	var string = Global.choose_dialogs()
@@ -38,7 +42,6 @@ func start():
 	randomize()
 	enemy = enemy_l1
 	__spawn()
-	Global.score = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,6 +49,8 @@ func _process(_delta):
 	$CanvasLayer/Label.text = str(Global.counter)
 	if Global.score > 4000:
 		$CanvasLayer/Label2.text = "REM Sleep"
+		if (not doremy_started) and Global.four:
+			doremy_dialog()
 	elif Global.score > 1500:
 		$CanvasLayer/Label2.text = "N3"
 		enemy = enemy_l3
@@ -59,7 +64,7 @@ func _process(_delta):
 
 
 func __spawn():
-	while is_inside_tree():
+	while is_inside_tree() and not doremy_active:
 		spawn_enemy(enemy)
 		if Global.counter > 0:
 			yield(get_tree().create_timer(Global.counter/2), "timeout")
@@ -101,3 +106,21 @@ func spawn_offscreen(goal: Vector2):
 		n = 620
 		b = 200
 	return Vector2((randi() % a) + m, (randi() % b) + n)
+
+
+func doremy_dialog():
+	for node in get_tree().get_nodes_in_group("enemies"):
+		node.die()
+	doremy_active = true
+	doremy_started = true
+	yield(get_tree().create_timer(2.0), "timeout")
+	var doremy_dialog = Dialogic.start("Doremy" + str(Global.doremy_counter))
+	add_child(doremy_dialog)
+	if Global.doremy_counter < 5:
+		Global.doremy_counter += 1
+
+
+func despawn_doremy():
+	doremy_active = false
+	enemy = enemy_l4
+	__spawn()

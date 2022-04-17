@@ -15,6 +15,8 @@ var deaths := -1
 
 var counter := 0.0
 
+var doremy_counter := 1
+
 var score: int
 var high_score: int
 
@@ -31,7 +33,7 @@ func _ready():
 
 
 func choose_dialogs() -> String:
-	if high_score > 4000 and four and not five:
+	if high_score > 4000 and four and (not five) and doremy_counter > 1:
 		five = true
 		return "Five"
 	elif high_score > 2500 and three and not four:

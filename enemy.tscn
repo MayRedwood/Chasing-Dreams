@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="Node2D" groups=["enemies"]]
 modulate = Color( 0.568627, 0.270588, 0.713726, 1 )
 script = ExtResource( 2 )
 bullet_kit = ExtResource( 3 )
