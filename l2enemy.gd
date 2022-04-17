@@ -69,9 +69,9 @@ func __shoot_4():
 
 func __shoot_5():
 	yield(get_tree().create_timer(2.5), "timeout")
-	var n := -7 * 360/8
+	var n := -7 * 360/12
 	while true:
-		shoot_at_player(deg2rad(n), 250)
-		n += 360/8
+		shoot_at_player(deg2rad(n), 200)
+		n += 360/12
 		n = n % 360
-		yield(get_tree().create_timer(0.1), "timeout")
+		yield(get_tree().create_timer(0.2), "timeout")
