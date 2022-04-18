@@ -105,7 +105,7 @@ func spawn_enemy(enem):
 	spawned.get_node("Tween").start()
 	spawned.player = $Player
 	if spawned is L4Enemy:
-		Global.counter = 1.5
+		Global.counter = 1.3
 	else:
 		Global.counter += 1
 

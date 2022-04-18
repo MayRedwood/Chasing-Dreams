@@ -45,8 +45,9 @@ func __shoot_2():
 func __shoot_3():
 	yield(get_tree().create_timer(2.5), "timeout")
 	# warning-ignore: unused_variable
-	for i in range(20):
+	for i in range(10):
 		shoot_at_player(deg2rad(5))
+		shoot_at_player()
 		shoot_at_player(deg2rad(-5))
 		yield(get_tree().create_timer(0.075), "timeout")
 	yield(get_tree().create_timer(2.5), "timeout")
@@ -95,3 +96,16 @@ func die():
 	$Tween.start()
 	yield($Tween, "tween_all_completed")
 	queue_free()
+
+
+func __create_bullet_hitbox(bullet_id):
+	if not Bullets.is_bullet_valid(bullet_id):
+		return
+	yield(get_tree().create_timer(0.6), "timeout")
+	var properties := {}
+	properties["transform"] = Bullets.get_bullet_property(bullet_id, "transform")
+	properties["velocity"] = Bullets.get_bullet_property(bullet_id, "velocity")
+	if properties["transform"] == null or properties["velocity"] == null or dead:
+		return
+	Bullets.release_bullet(bullet_id)
+	Bullets.spawn_bullet(bullet_kit, properties)
