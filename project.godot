@@ -156,6 +156,7 @@ config/name="Dreams Tonight"
 run/main_scene="res://main.tscn"
 boot_splash/image="res://bootsplash.png"
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
