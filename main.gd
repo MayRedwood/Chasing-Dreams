@@ -26,6 +26,12 @@ func _ready():
 	Global.score = 0
 	Global.counter = 0.0
 	Global.deaths += 1
+	process_dialog()
+	#start()
+
+
+func process_dialog():
+	#yield(get_tree().create_timer(0.5), "timeout")
 	var string = Global.choose_dialogs()
 	#Global.save_files()
 	if string != "":
@@ -37,7 +43,6 @@ func _ready():
 		add_child(dialogue)
 	else:
 		start()
-	#start()
 
 
 func start():
