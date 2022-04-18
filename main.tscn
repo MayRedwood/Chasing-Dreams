@@ -27,7 +27,7 @@ theme = ExtResource( 6 )
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
-color = Color( 0.298039, 0.247059, 0.568627, 1 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,7 +78,6 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="CanvasLayer"]
-visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
