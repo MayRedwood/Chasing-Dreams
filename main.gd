@@ -2,6 +2,7 @@ extends Node
 
 
 # Declare member variables here. Examples:
+export(PackedScene) var enemy_l0
 export(PackedScene) var enemy_l1
 export(PackedScene) var enemy_l2
 export(PackedScene) var enemy_l3
@@ -55,7 +56,10 @@ func start():
 	$Tween.start()
 	randomize()
 	enemy = enemy_l1
-	__spawn()
+	if Global.tutorial_done:
+		__spawn()
+	else:
+		spawn_tutorial_enemy()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -124,6 +128,25 @@ func spawn_offscreen(goal: Vector2):
 		n = 620
 		b = 200
 	return Vector2((randi() % a) + m, (randi() % b) + n)
+
+
+func spawn_tutorial_enemy():
+	var x := randi() % 1025
+	var y := randi() % 601
+	var spawned = enemy_l0.instance()
+	add_child(spawned)
+	var goal = Vector2(x, y)
+	spawned.position = spawn_offscreen(goal)
+	spawned.get_node("Tween").interpolate_property(
+			spawned, "position", spawned.position, goal, 3.0, 1
+	)
+	spawned.get_node("Tween").start()
+	spawned.player = $Player
+	spawned.look_at_player = true
+	Global.counter += 1
+	yield(spawned, "tree_exited")
+	Global.tutorial_done = true
+	__spawn()
 
 
 func doremy_dialog():

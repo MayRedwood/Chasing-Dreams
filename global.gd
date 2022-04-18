@@ -15,6 +15,8 @@ var save_path := "user://save.res"
 var save_0_path := "res://save0.res"
 var loaded := false
 
+var tutorial_done := false
+
 var deaths := -1
 
 var counter := 0.0
