@@ -67,7 +67,7 @@ func _process(_delta):
 	$CanvasLayer/Label.text = str(Global.counter)
 	if Global.score > 7000:
 		$CanvasLayer/Label2.text = ""
-		if not end_started:
+		if Global.four and not end_started:
 			end()
 	elif Global.score > 4000:
 		$CanvasLayer/Label2.text = "REM Sleep"

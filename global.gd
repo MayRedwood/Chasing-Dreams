@@ -79,7 +79,6 @@ func save_files():
 				pass
 
 
-
 func load_files():
 	loaded = true
 	var save_data: Resource
