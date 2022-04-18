@@ -34,7 +34,7 @@ func _ready():
 func process_dialog():
 	#yield(get_tree().create_timer(0.5), "timeout")
 	var string = Global.choose_dialogs()
-	#Global.save_files()
+	Global.save_files()
 	if string != "":
 		$Tween.interpolate_property(
 			Music, "volume_db", Music.volume_db, -80, 2.0, 1
@@ -64,7 +64,7 @@ func start():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$CanvasLayer/Label.text = str(Global.counter)
+	$CanvasLayer/Label.text = str(Global.doremy_counter)
 	if Global.score > 7000:
 		$CanvasLayer/Label2.text = ""
 		if Global.four and not end_started:

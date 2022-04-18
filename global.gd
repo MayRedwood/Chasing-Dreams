@@ -11,7 +11,7 @@ var enemy_color := LIGHT_PURPLE
 var bullet_color := DESATURATED_ROSE
 var player_color := VIBRANT_ROSE
 
-var save_path := "user://save.res"
+var save_path := "user://save.save"
 var save_0_path := "res://save0.res"
 var loaded := false
 
@@ -63,39 +63,48 @@ func save_files():
 	if not loaded:
 		load_files()
 	else:
-		var save_data = ResourceLoader.load(save_0_path).duplicate()
-		save_data.deaths = deaths
-		save_data.doremy_counter = doremy_counter
-		save_data.high_score = high_score
-		save_data.one = one
-		save_data.two = two
-		save_data.three = three
-		save_data.four = four
-		save_data.five = five
-		var e = ResourceSaver.save(save_path, save_data)
-		print(e)
-		if e != 0:
-			if e > null:
-				pass
+		var file = File.new()
+		file.open(save_path, File.WRITE)
+		var save_dict = {
+			"deaths": deaths,
+			"doremy_counter": doremy_counter,
+			"high_score": high_score,
+			"one": one,
+			"two": two,
+			"three": three,
+			"four": four,
+			"five": five
+		}
+		file.store_line(to_json(save_dict))
+		file.close()
 
 
 func load_files():
 	loaded = true
-	var save_data: Resource
-	var file := File.new()
+	var file = File.new()
 	if file.file_exists(save_path):
-		save_data = ResourceLoader.load(save_path)
-		deaths = save_data.deaths
-		doremy_counter = save_data.doremy_counter
-		high_score = save_data.high_score
-		one = save_data.one
-		two = save_data.two
-		three = save_data.three
-		four = save_data.four
-		five = save_data.five
+		file.open(save_path, File.READ)
+		var saved_data: Dictionary = parse_json(file.get_line())
+		deaths = saved_data.deaths
+		doremy_counter = saved_data.doremy_counter
+		high_score = saved_data.high_score
+		one = saved_data.one
+		two = saved_data.two
+		three = saved_data.three
+		four = saved_data.four
+		five = saved_data.five
+		file.close()
 	else:
-		save_data = ResourceLoader.load(save_0_path).duplicate()
-		var e = ResourceSaver.save(save_path, save_data)
-		if e != 0:
-			if e > null:
-				pass
+		file.open(save_path, File.WRITE)
+		var save_dict = {
+			"deaths": deaths,
+			"doremy_counter": doremy_counter,
+			"high_score": high_score,
+			"one": one,
+			"two": two,
+			"three": three,
+			"four": four,
+			"five": five
+		}
+		file.store_line(to_json(save_dict))
+		file.close()
