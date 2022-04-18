@@ -24,61 +24,61 @@ func _ready():
 
 
 func __shoot():
-	yield(get_tree().create_timer(2.5), "timeout")
+	yield(get_tree().create_timer(2.75), "timeout")
 	# warning-ignore: unused_variable
 	for i in range(8):
 		shoot_at_player(deg2rad(i * 10))
 		shoot_at_player(deg2rad(-i * 10))
 		yield(get_tree().create_timer(0.075), "timeout")
-	yield(get_tree().create_timer(2.5), "timeout")
+	yield(get_tree().create_timer(2.75), "timeout")
 	die()
 
 
 func __shoot_2():
-	yield(get_tree().create_timer(2.5), "timeout")
+	yield(get_tree().create_timer(2.75), "timeout")
 	for i in range(5):
 		shoot_circle(10, 0, 300 - i * 40)
-	yield(get_tree().create_timer(2.5), "timeout")
+	yield(get_tree().create_timer(2.75), "timeout")
 	die()
 
 
 func __shoot_3():
-	yield(get_tree().create_timer(2.5), "timeout")
+	yield(get_tree().create_timer(2.75), "timeout")
 	# warning-ignore: unused_variable
 	for i in range(10):
 		shoot_at_player(deg2rad(5))
 		shoot_at_player()
 		shoot_at_player(deg2rad(-5))
 		yield(get_tree().create_timer(0.075), "timeout")
-	yield(get_tree().create_timer(2.5), "timeout")
+	yield(get_tree().create_timer(2.75), "timeout")
 	die()
 	
 
 
 func __shoot_4_d(): # Deprecated
-	yield(get_tree().create_timer(2.5), "timeout")
+	yield(get_tree().create_timer(2.75), "timeout")
 	while true:
 		# warning-ignore: unused_variable
 		for i in range(10):
 			shoot_at_player(deg2rad(30))
 			shoot_at_player(deg2rad(-30))
 			yield(get_tree().create_timer(0.075), "timeout")
-		yield(get_tree().create_timer(2.5), "timeout")
+		yield(get_tree().create_timer(2.75), "timeout")
 
 
 func __shoot_5():
-	yield(get_tree().create_timer(2.5), "timeout")
+	yield(get_tree().create_timer(2.75), "timeout")
 	# warning-ignore: unused_variable
 	for i in range(10):
 		shoot_circle(6, deg2rad(i*360/25.0))
 		yield(get_tree().create_timer(0.075), "timeout")
-	yield(get_tree().create_timer(2.5), "timeout")
+	yield(get_tree().create_timer(2.75), "timeout")
 	die()
 
 
 
 func __shoot_5_d(): # Deprecated
-	yield(get_tree().create_timer(2.5), "timeout")
+	yield(get_tree().create_timer(2.75), "timeout")
 	var i := 0
 	while true:
 		shoot_circle(3, deg2rad(i))

@@ -82,7 +82,7 @@ func _process(_delta):
 	else:
 		$CanvasLayer/Label2.text = "N1"
 		enemy = enemy_l1
-	$CanvasLayer/Label3.text = str(Global.high_score)
+	$CanvasLayer/Label3.text = "Deaths: " + str(Global.deaths)
 
 
 func __spawn():
