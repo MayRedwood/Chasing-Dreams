@@ -6,7 +6,7 @@ const ACCEL := 0.8
 var speed: float = SPEED
 
 const MAX_TIMER := 120
-var timer := MAX_TIMER
+var timer := MAX_TIMER ## The timer on invincibility
 
 var grasping := false
 
@@ -66,7 +66,7 @@ func _on_area_shape_entered(area_id, area, area_shape, _local_shape):
 
 	#Bullets.call_deferred("release_bullet", bullet_id)
 	if not grasping:
-		grasping = true
+		grasping = true ## Don't die if we're alredy dead!
 		reload_scene()
 
 
